@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101a30">
+  <title>Canvas Studio | Business Model Canvas</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brandmark">✦</span>
+      <div>
+        <strong>Canvas Studio</strong>
+        <small>BUSINESS MODEL CANVAS</small>
+      </div>
+    </div>
+
+    <div class="topbar-right">
+      <nav class="actions">
+        <label class="example-picker" for="sampleSelect"><span>✧ Ejemplos</span>
+          <select id="sampleSelect" aria-label="Elegir ejemplo de modelo de negocio">
+            <option value="" selected>Seleccionar empresa…</option>
+            <option value="uber">Uber</option>
+            <option value="netflix">Netflix</option>
+            <option value="nubank">Nubank (Nu)</option>
+          </select>
+        </label>
+        <button id="resetBtn" class="button muted">↻ Limpiar</button>
+        <button id="pngBtn" class="button secondary">↓ PNG</button>
+      </nav>
+      <div class="uao-corner" aria-label="Logo UAO">
+        <img src="assets/uao-logo.png" alt="Logo UAO">
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">ESTRATEGIA · INNOVACIÓN · MODELOS DE NEGOCIO</p>
+        <h1>De una idea a un modelo de negocio <em>claro.</em></h1>
+        <p class="subtitle">Diseña los nueve bloques de tu Business Model Canvas, organiza tus ideas y exporta un resultado listo para compartir.</p>
+      </div>
+      <div class="hero-tag"><span class="pulse"></span><span id="saveState">Guardado automático activo</span></div>
+    </section>
+
+    <section class="project">
+      <div class="field">
+        <label for="projectName">Nombre del proyecto</label>
+        <input id="projectName" maxlength="90" placeholder="Ej. EcoMarket, mi nueva idea de negocio">
+      </div>
+      <div class="field authors-field">
+        <label>Autores / responsables (hasta cuatro)</label>
+        <div class="authors-grid">
+          <input id="author1" maxlength="100" placeholder="Autor 1" aria-label="Autor 1">
+          <input id="author2" maxlength="100" placeholder="Autor 2" aria-label="Autor 2">
+          <input id="author3" maxlength="100" placeholder="Autor 3" aria-label="Autor 3">
+          <input id="author4" maxlength="100" placeholder="Autor 4" aria-label="Autor 4">
+        </div>
+      </div>
+      <div class="field short">
+        <label for="date">Fecha</label>
+        <input type="date" id="date">
+      </div>
+    </section>
+
+    <div class="workspace-heading">
+      <div>
+        <h2>Tu lienzo de negocio</h2>
+        <p>Selecciona un bloque para agregar ideas. Cada elemento se puede editar y eliminar.</p>
+      </div>
+      <div class="progress-wrap">
+        <span id="progressText">0 de 9 bloques completos</span>
+        <div class="progress"><div id="progressBar"></div></div>
+      </div>
+    </div>
+
+    <section id="canvas" class="canvas" aria-label="Lienzo de modelo de negocio"></section>
+
+    <section class="bottom-row">
+      <div class="tip">
+        <strong>✦ Consejo</strong>
+        <p>Comienza por los segmentos de clientes y tu propuesta de valor. Después conecta los canales, las relaciones y las fuentes de ingresos.</p>
+      </div>
+      <div class="controls">
+        <button id="jsonBtn" class="button outline">↓ Descargar respaldo JSON</button>
+        <label class="button outline upload">↑ Importar JSON<input type="file" id="jsonFile" accept="application/json,.json" hidden></label>
+      </div>
+    </section>
+
+    <footer>Canvas Studio · Tus datos se guardan en este navegador. Ninguna información se envía a servidores.</footer>
+  </main>
+
+  <dialog id="editor">
+    <form method="dialog" id="editorForm">
+      <div class="dialog-header">
+        <div>
+          <span class="eyebrow" id="dialogNumber">BLOQUE 01</span>
+          <h2 id="dialogTitle">Bloque</h2>
+          <p id="dialogDesc"></p>
+        </div>
+        <button class="close" type="button" id="closeDialog" aria-label="Cerrar">×</button>
+      </div>
+      <div class="editor-body">
+        <label for="newItem">Nueva idea</label>
+        <div class="entry">
+          <textarea id="newItem" placeholder="Escribe una idea concreta…" rows="2"></textarea>
+          <button type="button" id="addItem" class="button primary">+ Añadir</button>
+        </div>
+        <p class="hint">Pulsa Ctrl + Enter para añadir rápidamente. Puedes editar cada idea directamente.</p>
+        <div id="itemsList" class="items-list"></div>
+      </div>
+      <div class="dialog-foot">
+        <span id="itemCount">0 ideas</span>
+        <button class="button primary" type="submit">Listo ✓</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="offline-export.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
